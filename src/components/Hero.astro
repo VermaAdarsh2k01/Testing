@@ -1,0 +1,17 @@
+---
+import { sanityClient } from 'sanity:client';
+
+// GROQ query to fetch simpleContent document
+const query = `*[_type == "simpleContent"][0] {
+  title,
+  heading
+}`;
+
+// Fetch the data
+const content = await sanityClient.fetch(query);
+---
+
+<section>
+    <div>{content.title}</div>
+    <div>{content.heading}</div>
+</section>
